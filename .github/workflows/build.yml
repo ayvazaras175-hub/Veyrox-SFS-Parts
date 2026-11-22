@@ -1,4 +1,4 @@
-name: Build Veyrox SFS Parts
+name: Build ZİP
 
 on:
   workflow_dispatch:
