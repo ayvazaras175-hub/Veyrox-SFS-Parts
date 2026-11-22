@@ -1,0 +1,30 @@
+name: Build Veyrox SFS Parts
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check ZIP files
+        run: |
+          find . -name "*.zip" -type f
+
+      - name: Build ZIP
+        run: |
+          mkdir -p output
+          zip -r output/Veyrox-SFS-Parts.zip parts textures README.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Veyrox-SFS-Parts
+          path: output/Veyrox-SFS-Parts.zip
